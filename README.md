@@ -61,8 +61,7 @@ Map {
 ```
 
 you will end up with side-by-side maps that look like this when visualized in the app:
-
-![your app](tutorialpic1.png)
+<img width="644" alt="tutorialpic1" src="https://user-images.githubusercontent.com/33079140/36765153-c422ad9a-1be4-11e8-8916-db18e5cb152d.png">
 
 -Next under either of your MyApp or MyMap qml files place the following code:
 ```
