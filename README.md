@@ -190,6 +190,6 @@ App {
 ## Acknowledgments
 
 * Google
-* My Cohort for telling me to keep going even when I don't want to
+* My 2018 UWT MSGT cohort!!
 
 
