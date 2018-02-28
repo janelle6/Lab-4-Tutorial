@@ -92,7 +92,89 @@ you will end up with side-by-side maps that look like this when visualized in th
 ```
 
 Thanks to ESRI and its turn-key abilites you now have a functioning app that serves a purpose!
+```
+import QtQuick 2.3
+import QtQuick.Controls 1.2
+import QtQuick.Layouts 1.1
+import QtPositioning 5.3
 
+import ArcGIS.AppFramework 1.0
+import ArcGIS.AppFramework.Controls 1.0
+import ArcGIS.AppFramework.Runtime 1.0
+import ArcGIS.AppFramework.Runtime.Controls 1.0
+
+App {
+    id: app
+    width: 640
+    height: 480
+
+    Rectangle {
+        id: titleRect
+
+        anchors {
+            left: parent.left
+            right: parent.right
+            top: parent.top
+        }
+
+        height: titleText.paintedHeight + titleText.anchors.margins * 2
+        color: app.info.propertyValue("titleBackgroundColor", "purple")
+
+        Text {
+            id: titleText
+
+            anchors {
+                left: parent.left
+                right: parent.right
+                top: parent.top
+                margins: 2 * AppFramework.displayScaleFactor
+            }
+
+            text: app.info.title
+            color: app.info.propertyValue("titleTextColor", "white")
+            font {
+                pointSize: 22
+            }
+            wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+            maximumLineCount: 2
+            elide: Text.ElideRight
+            horizontalAlignment: Text.AlignHCenter
+        }
+    }
+
+    MyMap {
+               id: mapLeft
+
+               anchors {
+                   left: parent.left
+                   //right: parent.right
+                   top: titleRect.bottom
+                   bottom: parent.bottom
+               }
+               width: parent.width * 0.5
+               extent: mapRight.extent
+
+
+           }
+    MyMap {
+               id: mapRight
+
+               anchors {
+                   //left: parent.left
+                   right: parent.right
+                   top: titleRect.bottom
+                   bottom: parent.bottom
+               }
+               width: parent.width * 0.5
+               extent: mapLeft.extent
+               ArcGISTiledMapServiceLayer {
+                   url: app.info.propertyValue("basemapServiceUrl", "http://server.arcgisonline.com/arcgis/rest/services/World_Shaded_Relief/MapServer")
+               }
+                        }
+
+}
+
+```
 ## congrats!
 
 
